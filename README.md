@@ -4,13 +4,13 @@ This project showcases a complete, end-to-end automated workflow for collecting 
 
 ---
 
-## ✦ Overview
+## Overview
 
 The goal of this automation is to remove all manual work from outreach. The system fetches contacts from HubSpot, prepares the data, generates customized email content using a local AI model, sends the emails, and updates the contact’s status inside HubSpot — all without human intervention.
 
 ---
 
-## ✦ Architecture Breakdown
+## Architecture Breakdown
 
 ### **1. Contact Retrieval (Python + FastAPI)**
 - A Python script connects to HubSpot via the official API and pulls all contact records with full property data.
@@ -38,7 +38,7 @@ For every contact:
 
 ---
 
-## ✦ Data Flow Summary
+## Data Flow Summary
 
 HubSpot API → FastAPI (data fetch)  
 ↓  
@@ -54,7 +54,7 @@ HubSpot contact status is updated
 
 ---
 
-## ✦ Key Features
+## Key Features
 
 - **Full automation** from data pull to email delivery.  
 - **Local AI generation** ensures fast, private, and cost-efficient content creation.  
@@ -64,7 +64,7 @@ HubSpot contact status is updated
 
 ---
 
-## ✦ Requirements
+## Requirements
 
 - HubSpot private app token  
 - Docker environment  
@@ -75,7 +75,7 @@ HubSpot contact status is updated
 
 ---
 
-## ✦ Why This Project Matters
+## Why This Project Matters
 
 This system demonstrates practical automation skills suited for real companies:
 
@@ -87,4 +87,5 @@ This system demonstrates practical automation skills suited for real companies:
 - synchronizing multiple systems  
 
 It serves as a strong portfolio example for automation, backend development, and AI-driven marketing operations.
+
 
