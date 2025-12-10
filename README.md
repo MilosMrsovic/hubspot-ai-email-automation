@@ -6,7 +6,7 @@ This project showcases a complete, end-to-end automated workflow for collecting 
 
 ## Overview
 
-The goal of this automation is to remove all manual work from outreach. The system **fetches only contacts with the status 'in_progress' from HubSpot**, prepares the data, generates customized email content using a local AI model, sends the emails, updates the contact’s status inside HubSpot, and **sends a final summary report**—all without human intervention.
+The goal of this automation is to remove all manual work from outreach. The system **fetches only contacts with the status 'in_progress' from HubSpot**, prepares the data, generates customized email content using a local AI model, sends the emails, updates the contact’s status inside HubSpot, and **sends a final summary report** all without human intervention.
 
 ---
 
@@ -96,3 +96,4 @@ This system demonstrates practical automation skills suited for real companies:
 - **delivering post-process reporting**
 
 It serves as a strong portfolio example for automation, backend development, and AI-driven marketing operations.
+
