@@ -3,14 +3,14 @@
   "nodes": [
     {
       "parameters": {
-        "fileSelector": "****",
+        "fileSelector": "/data/***.csv",
         "options": {}
       },
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
       "position": [
         -38816,
-        -2620
+        -2624
       ],
       "id": "0f1fc425-1388-4478-ba72-e184441226f7",
       "name": "Read/Write Files from Disk1"
@@ -23,7 +23,7 @@
       "typeVersion": 1.1,
       "position": [
         -38592,
-        -2620
+        -2624
       ],
       "id": "5191f61c-2fa4-4f87-a118-238d9c609c37",
       "name": "Extract from File"
@@ -37,7 +37,7 @@
       "typeVersion": 1,
       "position": [
         -38368,
-        -2620
+        -2624
       ],
       "id": "cc23cba7-e1ba-471f-b12a-631050440e2f",
       "name": "Split Out"
@@ -50,7 +50,7 @@
       "typeVersion": 3,
       "position": [
         -38144,
-        -2620
+        -2624
       ],
       "id": "2f4fd060-007e-4002-a148-5646d6173e2b",
       "name": "Loop Over Items"
@@ -85,8 +85,8 @@
       "name": "Ollama Chat Model",
       "credentials": {
         "ollamaApi": {
-          "id": "****",
-          "name": "****"
+          "id": "***",
+          "name": "***"
         }
       }
     },
@@ -106,11 +106,11 @@
       ],
       "id": "01e18729-e9dd-4ee9-9e57-2b16f005c862",
       "name": "Send a message",
-      "webhookId": "****",
+      "webhookId": "***",
       "credentials": {
         "gmailOAuth2": {
-          "id": "****",
-          "name": "****"
+          "id": "***",
+          "name": "***"
         }
       }
     },
@@ -135,108 +135,8 @@
       "name": "Create or update a contact",
       "credentials": {
         "hubspotAppToken": {
-          "id": "****",
-          "name": "****"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "****",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        -39040,
-        -2620
-      ],
-      "id": "d27ce2ea-e107-46d5-8f50-2f8051a65425",
-      "name": "HTTP Request"
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "simple_memory"
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        -37904,
-        -2240
-      ],
-      "id": "87cee5d9-1bb5-466a-a9a8-fb512b457682",
-      "name": "Simple Memory"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Generate **one short, sharp, professional email subject line**, under 6 words, personalized using the client data below.  \nDo not include emojis. Do not output explanations, examples, or extra text. Only output the subject line itself.\n\nClient Data:\nFirst Name: {{ $('Loop Over Items').item.json.firstname }}\nLast Viewed Product: {{ $('Loop Over Items').item.json.last_viewed }}\nFavorite Topics/Categories: {{ $('Loop Over Items').item.json.favorite_content_topics }}\nRFM Recency: {{ $('Loop Over Items').item.json.rfm_recency }}\nRFM Frequency: {{ $('Loop Over Items').item.json.rfm_frequency }}\nLast Purchase Value: {{ $('Loop Over Items').item.json.purchase_value }}",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -37632,
-        -2432
-      ],
-      "id": "de794f15-9b6d-40c2-a8b4-94ff9c8c92e8",
-      "name": "AI Agent1"
-    },
-    {
-      "parameters": {
-        "model": "llama3.1:latest",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
-      "typeVersion": 1,
-      "position": [
-        -37696,
-        -2240
-      ],
-      "id": "e4cd283a-9dce-431f-8062-a4df3976784a",
-      "name": "Ollama Chat Model1",
-      "credentials": {
-        "ollamaApi": {
-          "id": "****",
-          "name": "****"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "key_two"
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        -37552,
-        -2240
-      ],
-      "id": "a73425d2-a8be-4ddc-aaf2-032b6335e5ad",
-      "name": "Simple Memory1"
-    },
-    {
-      "parameters": {
-        "sendTo": "****",
-        "subject": "Error in stock Autoamtion workflow",
-        "message": "=HI Milose, there is an error in {{ $json.workflowName }}.<br><br>\n\nPlease check the {{ $json.nodeName }} in {{ $json.workflowName }} and see the message below.<br><br>\n\nMessage from bot:<br>\n{{ $json.errorMessage }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        -38080,
-        -1920
-      ],
-      "id": "69a05726-c8d0-4035-b416-5139be7c34a3",
-      "name": "Send a message1",
-      "webhookId": "****",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "****",
-          "name": "****"
+          "id": "***",
+          "name": "***"
         }
       }
     },
@@ -245,17 +145,17 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "****",
+          "value": "***",
           "mode": "list",
           "cachedResultName": "Inventory Data",
-          "cachedResultUrl": "****"
+          "cachedResultUrl": "***"
         },
         "sheetName": {
           "__rl": true,
-          "value": 1184053928,
+          "value": "***",
           "mode": "list",
           "cachedResultName": "Log sheet",
-          "cachedResultUrl": "****"
+          "cachedResultUrl": "***"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -319,333 +219,45 @@
       "name": "Append row in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "****",
-          "name": "****"
+          "id": "***",
+          "name": "***"
         }
       }
     },
     {
       "parameters": {
-        "operation": "formatDate",
-        "date": "={{ $json.timestamp }}",
-        "format": "custom",
-        "customFormat": "MMM dd, yyyy HH:mm:ss",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 2,
-      "position": [
-        -38528,
-        -1920
-      ],
-      "id": "2226f4b3-da62-4661-a837-397e199428d6",
-      "name": "Date & Time"
-    },
-    {
-      "parameters": {
-        "jsCode": "const item = $input.first().json;\n\nconsole.log('Original timestamp:', item.timestamp);\n\nitem.timestamp = item.timestamp.split('+')[0];\n\nconsole.log('Clean timestamp:', item.timestamp);\n\nreturn [{ json: item }];"
+        "jsCode": "const rows = $json.table;\n\nlet html = `\n<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\" style=\"border-collapse: collapse;\">\n  <tr>\n    <th>Firstname</th>\n    <th>Email</th>\n  </tr>\n`;\n\nfor (const row of rows) {\n  html += `\n  <tr>\n    <td>${row.firstname}</td>\n    <td>${row.email}</td>\n  </tr>\n  `;\n}\n\nhtml += `</table>`;\n\nreturn [\n  {\n    json: {\n      html_table: html\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -38752,
-        -1920
+        -37696,
+        -2720
       ],
-      "id": "14c7a925-974f-422e-a525-117c35641767",
-      "name": "Code1"
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={\n  \"timestamp\": {{ $now }},\n  \"nodeName\": \"{{ $json.execution.lastNodeExecuted }}\",\n  \"errorMessage\": \"{{ $json.execution.error.message }}\",\n  \"workflowName\": \"{{ $json.workflow.name }}\"\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -38976,
-        -1920
-      ],
-      "id": "e897f470-3d3b-4020-9d01-87595cbec959",
-      "name": "Edit Fields"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.errorTrigger",
-      "typeVersion": 1,
-      "position": [
-        -39200,
-        -1920
-      ],
-      "id": "89857080-f18c-4dc6-a-a8d-5335891191b8",
-      "name": "Error Trigger"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        -37296,
-        -2400
-      ],
-      "id": "22adfa8c-871f-406e-bbd8-a0ad906a5588",
-      "name": "Wait",
-      "webhookId": "****"
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "daysInterval": 3,
-              "triggerAtHour": 13
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.3,
-      "position": [
-        -39264,
-        -2624
-      ],
-      "id": "2c7b9c38-e203-4f7a-840c-fb6a2af1dc72",
-      "name": "Schedule Trigger"
+      "id": "a701e53e-800e-4e42-b484-e31493761b40",
+      "name": "Code in JavaScript1"
     }
   ],
-  "pinData": {},
   "connections": {
-    "Read/Write Files from Disk1": {
-      "main": [
-        [
-          {
-            "node": "Extract from File",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Extract from File": {
-      "main": [
-        [
-          {
-            "node": "Split Out",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Split Out": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [],
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ollama Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Send a message": {
-      "main": [
-        [
-          {
-            "node": "Create or update a contact",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "Read/Write Files from Disk1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Simple Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ollama Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Simple Memory1": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent1": {
-      "main": [
-        [
-          {
-            "node": "Wait",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create or update a contact": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Append row in sheet": {
-      "main": [
-        [
-          {
-            "node": "Send a message1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Date & Time": {
-      "main": [
-        [
-          {
-            "node": "Append row in sheet",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code1": {
-      "main": [
-        [
-          {
-            "node": "Date & Time",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "Code1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Error Trigger": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait": {
-      "main": [
-        [
-          {
-            "node": "Send a message",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Schedule Trigger": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
+    "Read/Write Files from Disk1": { "main": [[{"node": "Extract from File","type":"main","index":0}]] },
+    "Extract from File": { "main": [[{"node": "Split Out","type":"main","index":0}]] },
+    "Split Out": { "main": [[{"node": "Loop Over Items","type":"main","index":0}]] },
+    "Loop Over Items": { "main": [[{"node": "Aggregate4","type":"main","index":0}], [{"node": "AI Agent","type":"main","index":0}]] },
+    "Ollama Chat Model": { "ai_languageModel": [[{"node": "AI Agent","type":"ai_languageModel","index":0}]] },
+    "AI Agent": { "main": [[{"node": "AI Agent1","type":"main","index":0}]] },
+    "Send a message": { "main": [[{"node": "Create or update a contact","type":"main","index":0}]] },
+    "AI Agent1": { "main": [[{"node": "Wait","type":"main","index":0}]] },
+    "Create or update a contact": { "main": [[{"node": "Edit Fields1","type":"main","index":0}]] },
+    "Edit Fields1": { "main": [[{"node": "Loop Over Items","type":"main","index":0}]] },
+    "Aggregate4": { "main": [[{"node": "Code in JavaScript1","type":"main","index":0}]] },
+    "Code in JavaScript1": { "main": [[{"node": "Send a message2","type":"main","index":0}]] }
   },
-  "active": false,
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "versionId": "1afbe514-946f-45c5-9f23-09ba9d8723f2",
+  "active": true,
+  "versionId": "***",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "fe31275b2dbab5a24e5b98a9aa5b684f0a6b7576757b3e8dda2840854ea84390"
+    "instanceId": "***"
   },
-  "id": "VbSBF3VwaZqKqjHa",
+  "id": "***",
   "tags": []
 }
