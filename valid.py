@@ -4,7 +4,7 @@ import pandas as pd
 import os
 
 # --- Konfiguracija ---
-HUBSPOT_TOKEN = "*******************************"  # MASKIRANO
+HUBSPOT_TOKEN = "***************************"  # MASKIRANO
 HEADERS = {
     "Authorization": f"Bearer {HUBSPOT_TOKEN}",
     "Content-Type": "application/json"
@@ -13,11 +13,9 @@ HEADERS = {
 PROPERTIES_URL = "https://api.hubapi.com/crm/v3/properties/contacts"
 CONTACTS_URL = "https://api.hubapi.com/crm/v3/objects/contacts"
 
-# --- Apsolutni path za output u mountovani folder ---
 OUTPUT_DIR = "/data"
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "hubspot_full_export.csv")
 
-# --- Funkcije ---
 def get_all_properties():
     print("Fetching all HubSpot contact properties...")
     resp = requests.get(PROPERTIES_URL, headers=HEADERS)
@@ -31,23 +29,34 @@ def get_all_contacts(all_props):
     print("Fetching all contacts with full properties...")
     contacts = []
     after = None
+    
+    if "hs_lead_status" not in all_props:
+        all_props.append("hs_lead_status")
+    
     while True:
         params = {"limit": 100, "properties": all_props}
         if after:
             params["after"] = after
+        
         resp = requests.get(CONTACTS_URL, headers=HEADERS, params=params)
         resp.raise_for_status()
         data = resp.json()
+        
         for c in data["results"]:
-            row = {"id": c["id"]}
-            row.update(c.get("properties", {}))
-            contacts.append(row)
-        if "paging" in data:
+            props = c.get("properties", {})
+            if props.get("hs_lead_status") == "IN_PROGRESS":
+                row = {"id": c["id"]}
+                row.update(props)
+                contacts.append(row)
+        
+        if "paging" in data and "next" in data["paging"]:
             after = data["paging"]["next"]["after"]
         else:
             break
-    print(f"Total contacts fetched: {len(contacts)}")
+    
+    print(f"Total contacts fetched with hs_lead_status='IN_PROGRESS': {len(contacts)}")
     return contacts
+
 
 def save_to_csv(contacts, columns, filename=OUTPUT_FILE):
     print(f"Saving CSV to: {filename}")
@@ -57,7 +66,6 @@ def save_to_csv(contacts, columns, filename=OUTPUT_FILE):
         writer.writerows(contacts)
     print(f"Saved CSV → {filename}")
 
-# --- Main ---
 print("Current working directory:", os.getcwd())
 all_properties = get_all_properties()
 csv_columns = ["id"] + all_properties
@@ -65,7 +73,6 @@ contacts = get_all_contacts(all_properties)
 
 save_to_csv(contacts, csv_columns)
 
-# --- Pandas cleanup ---
 df = pd.read_csv(OUTPUT_FILE, dtype=str)
 df = df.replace(["", " ", "  ", "   "], pd.NA)
 df = df.dropna(axis=1, how="all")
