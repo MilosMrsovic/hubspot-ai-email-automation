@@ -7,7 +7,6 @@ app = FastAPI()
 def run_script():
 
     try:
-        # Pokreće tvoju Python skriptu
         result = subprocess.run(
             ["python3", "/data/valid.py"], 
             capture_output=True, 
@@ -24,3 +23,4 @@ def run_script():
             "success": False,
             "error": str(e)
         }
+
